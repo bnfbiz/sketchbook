@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "robotcontrol",
+            "command": "/home/pi/sketchbook/bin/arduino-cli",
+            "args": [
+                "compile",
+                "-v",
+                "-b",
+                "arduino:avr:leonardo",
+                "robotcontrol"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "detail": "compiler: arduino compile",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "robotcontrol-upload",
+            "command": "/home/pi/sketchbook/bin/arduino-cli",
+            "args": [
+                "upload",
+                "-p",
+                "/dev/ttyACM0",
+                "-v",
+                "--fqbn",
+                "arduino:avr:leonardo",
+                "robotcontrol"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "detail": "upload: arduino program",
+            "problemMatcher": []
+        }
+    ]
+}
